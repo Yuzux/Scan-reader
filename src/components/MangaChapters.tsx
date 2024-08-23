@@ -101,7 +101,8 @@ const MangaChapters: React.FC = () => {
                     >
                     <List>
                         {manga.chapters.map((chapter) => (
-                            <ListItem key={chapter.id} button>
+                            <ListItem key={chapter.id} button 
+                                onClick={() => window.location.href = `/reader/${mangaId}/${chapter.id}`}>
                                 <ListItemText
                                     primary={chapter.title}
                                     secondary={chapter.description}
