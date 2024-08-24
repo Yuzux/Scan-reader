@@ -166,26 +166,68 @@ const MangaReader: React.FC = () => {
                     )}
                 </Box>
 
-                {/* Affichage des pages */}
-                {pages.slice(0, currentPage + 10).map((page, index) => {
+                 {/* Affichage des pages */}
+                 {pages.slice(0, currentPage + 10).map((page, index) => {
                     if (index === currentPage + 9) {
                         return (
-                            <img
+                            <Box
                                 key={index}
-                                src={`/scans/${mangaId}/${chapterId}/${page}`}
-                                alt={`Page ${index + 1}`}
-                                ref={lastImageRef}
-                                style={{ width: '100%', marginBottom: '10px' }}
-                            />
+                                sx={{
+                                    position: 'relative',
+                                    marginBottom: '10px',
+                                    overflow: 'hidden',
+                                    height: 'auto'
+                                }}
+                            >
+                                <img
+                                    src={`/scans/${mangaId}/${chapterId}/${page}`}
+                                    alt={`Page ${index + 1}`}
+                                    ref={lastImageRef}
+                                    style={{ width: '100%', pointerEvents: 'none', userSelect: 'none' }}
+                                />
+                                {/* Overlay transparent */}
+                                <Box
+                                    sx={{
+                                        position: 'absolute',
+                                        top: 0,
+                                        left: 0,
+                                        right: 0,
+                                        bottom: 0,
+                                        backgroundColor: 'rgba(0, 0, 0, 0)', // Transparence
+                                        zIndex: 2
+                                    }}
+                                />
+                            </Box>
                         );
                     } else {
                         return (
-                            <img
+                            <Box
                                 key={index}
-                                src={`/scans/${mangaId}/${chapterId}/${page}`}
-                                alt={`Page ${index + 1}`}
-                                style={{ width: '100%', marginBottom: '10px' }}
-                            />
+                                sx={{
+                                    position: 'relative',
+                                    marginBottom: '10px',
+                                    overflow: 'hidden',
+                                    height: 'auto'
+                                }}
+                            >
+                                <img
+                                    src={`/scans/${mangaId}/${chapterId}/${page}`}
+                                    alt={`Page ${index + 1}`}
+                                    style={{ width: '100%', pointerEvents: 'none', userSelect: 'none' }}
+                                />
+                                {/* Overlay transparent */}
+                                <Box
+                                    sx={{
+                                        position: 'absolute',
+                                        top: 0,
+                                        left: 0,
+                                        right: 0,
+                                        bottom: 0,
+                                        backgroundColor: 'rgba(0, 0, 0, 0)', // Transparence
+                                        zIndex: 2
+                                    }}
+                                />
+                            </Box>
                         );
                     }
                 })}
